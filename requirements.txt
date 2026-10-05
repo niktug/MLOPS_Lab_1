@@ -1,0 +1,22 @@
+# --- API ---
+fastapi
+uvicorn
+
+# --- NLP ---
+transformers
+torch
+
+# --- Validation / Schemas ---
+pydantic
+
+# --- Testing ---
+pytest
+httpx
+requests
+
+# --- Code quality ---
+black
+flake8
+isort
+mypy
+pre-commit

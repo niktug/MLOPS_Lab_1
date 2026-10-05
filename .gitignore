@@ -1,0 +1,31 @@
+# Виртуальные окружения
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Кэш Hugging Face (веса моделей весят сотни МБ!)
+.cache/
+huggingface/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Переменные окружения
+.env
+
+# Отчёты и временные файлы
+report.txt

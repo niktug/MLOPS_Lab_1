@@ -1,0 +1,33 @@
+repos:
+  # 1. Стандартные хуки pre-commit: убирают пробелы в конце строк,
+  #    следят за пустой строкой в конце файла, проверяют YAML/JSON и т.д.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace      # удаляет пробелы в конце строк
+      - id: end-of-file-fixer        # добавляет пустую строку в конце файла
+      - id: check-yaml               # проверяет синтаксис YAML
+      - id: check-added-large-files  # блокирует коммит файлов больше 500 КБ
+      - id: check-merge-conflict     # ловит незавершённые merge-конфликты
+
+  # 2. isort — сортировка импортов
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]  # совместимость с форматтером black
+
+  # 3. black — автоформаттер (единый стиль)
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        language_version: python3.10
+
+  # 4. flake8 — линтер (ищет ошибки стиля и потенциальные баги)
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: ["--max-line-length=88", "--extend-ignore=E203,W503"]
+        # E203 и W503 конфликтуют с black — их принято игнорировать
