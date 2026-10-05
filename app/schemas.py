@@ -22,7 +22,7 @@ class PredictRequest(BaseModel):
     text: str = Field(
         ...,
         min_length=1,
-        max_length=5000,
+        max_length=500,
         description="Текст на русском языке для классификации",
         examples=["Сегодня прекрасная погода"],
     )

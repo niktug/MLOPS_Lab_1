@@ -13,6 +13,7 @@ from transformers import pipeline
 class ToxicityModel:
     """Обёртка над моделью классификации токсичности."""
 
+    t = 0
     MODEL_NAME = "s-nlp/russian_toxicity_classifier"
     TASK = "text-classification"
     LABELS = ["neutral", "toxic"]
