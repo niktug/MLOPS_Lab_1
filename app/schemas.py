@@ -1,4 +1,9 @@
-from pydantic import BaseModel, Field
+from typing import Annotated
+
+from pydantic import BaseModel, Field, StringConstraints
+
+# Общее правило валидации текста — используется и в /predict, и в /predict_batch
+ValidText = Annotated[str, StringConstraints(min_length=1, max_length=500)]
 
 
 class HealthResponse(BaseModel):
@@ -19,10 +24,8 @@ class HealthResponse(BaseModel):
 class PredictRequest(BaseModel):
     """Запрос эндпоинта POST /predict — один текст на классификацию."""
 
-    text: str = Field(
+    text: ValidText = Field(
         ...,
-        min_length=1,
-        max_length=500,
         description="Текст на русском языке для классификации",
         examples=["Сегодня прекрасная погода"],
     )
@@ -48,7 +51,7 @@ class PredictResponse(BaseModel):
 class BatchRequest(BaseModel):
     """Запрос эндпоинта POST /predict_batch — список текстов."""
 
-    texts: list[str] = Field(
+    texts: list[ValidText] = Field(
         ...,
         description="Список текстов для пакетной классификации",
         examples=[["Отличная работа!", "Фу. Очень плохо..."]],
