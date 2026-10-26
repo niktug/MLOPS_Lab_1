@@ -1,0 +1,18 @@
+services:
+  toxicity-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toxicity-service:latest
+    container_name: toxicity-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - hf_cache:/home/app/.cache/huggingface
+    environment:
+      - HF_HOME=/home/app/.cache/huggingface
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+volumes:
+  hf_cache:

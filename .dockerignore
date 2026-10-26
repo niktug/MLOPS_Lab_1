@@ -1,0 +1,37 @@
+# Виртуальные окружения — не нужны, зависимости ставим заново в образе
+venv/
+.venv/
+env/
+
+# Python-кэши — мусор
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Git — история не нужна внутри образа
+.git/
+.gitignore
+
+# Кэш Hugging Face и веса моделей — веса качаются при старте контейнера
+.cache/
+huggingface/
+models/
+
+# IDE и системные файлы
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Docker-файлы — не нужны внутри образа
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Документация и отчёты
+README.md
+report.txt
+*.md
